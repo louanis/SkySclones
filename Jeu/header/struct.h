@@ -11,7 +11,7 @@ typedef struct Stone_{
 }Stone;
 
 typedef struct Board_{
-    Stone ** board;
+    Stone *** board;
     char element;
     char red;
     char blue;

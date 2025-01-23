@@ -4,7 +4,7 @@
 
 typedef struct Stone_{
     char col; //Blue = 0, Red = 1
-    pic * tab_pic; //Contient la quantité de pic pour chaque face, l'ordre de lecture n'est pas determiné et dependra du layout de Board
+    pic * tab_pic; // contains the number of spike in the order : left ; up ; down ; right
     short id;
     char element;
     char null;
@@ -13,8 +13,8 @@ typedef struct Stone_{
 typedef struct Board_{
     Stone *** board;
     char element;
-    char red;
-    char blue;
+    char * color; // color[0] = points for Blue, color[1] = points for Red
+    char size;
 }Board;
 
 typedef struct Deck_{
@@ -22,5 +22,9 @@ typedef struct Deck_{
     char col; //Blue = 0, Red = 1
 }Deck;
 
+typedef struct Position_{
+    char col;
+    char row;
+}Position;
 
 #endif

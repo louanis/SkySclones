@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../header/struct.h"
-#include "../header/type_val.h"
+#include "../header/types_val.h"
 
 
 
@@ -14,14 +14,14 @@ Board * init_board(){
         exit(EXIT_FAILURE);
     }
 
-    Stones ** plateau = (Stones**) malloc(sizeof(Stones*)*BOARD_SIZE);
+    Stone *** plateau = (Stone***) malloc(sizeof(Stone**)*BOARD_SIZE);
 
     if(plateau == NULL){
         exit(EXIT_FAILURE);
     }
 
     for(int i = 0;i<BOARD_SIZE;i++){
-        plateau[i] = (Stones*) malloc(sizeof(Stones)*BOARD_SIZE);
+        plateau[i] = (Stone**) malloc(sizeof(Stone*)*BOARD_SIZE);
 
         if(plateau[i] == NULL){
             exit(EXIT_FAILURE);
@@ -32,7 +32,7 @@ Board * init_board(){
     main_plateau -> board = plateau;
     main_plateau -> element = 0;
     main_plateau -> color = (char*) malloc(sizeof(char)*2);
-    main_plateau -> size = BOARD_SIZE
+    main_plateau -> size = BOARD_SIZE;
 
     return main_plateau;
 }
@@ -41,6 +41,9 @@ void free_board(Board * main_plateau){
 
 
     for(int i = 0; i < main_plateau -> size ;i++){
+        for(int j = 0; j < main_plateau -> size; j++){
+            free(main_plateau -> board[i][j]);
+        }
         free(main_plateau -> board[i]);
     }
 

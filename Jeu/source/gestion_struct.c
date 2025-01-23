@@ -62,6 +62,8 @@ void ajouter_stone_board(Stone * pierre, Board * main_plateau, Position * pos){
 }
 
 void update_board(Board * main_plateau, Position * pos){
+
+
     if(pos -> col - 'a' >= main_plateau -> size || pos -> row >= main_plateau -> size){
         exit(EXIT_FAILURE);
     }
@@ -73,7 +75,7 @@ void update_board(Board * main_plateau, Position * pos){
 
             //update the score
             main_plateau -> color[main_plateau -> board[pos -> col - 'a'][pos -> row] -> col] += 1;
-            main_plateau -> color[(1 & (~main_plateau -> board[pos -> col - 'a'][pos -> row] -> col))] -= 1;
+            main_plateau -> color[(1 & (~(main_plateau -> board[pos -> col - 'a'][pos -> row] -> col)))] -= 1;
         }
     }
     if(pos -> row > 0){
@@ -83,7 +85,7 @@ void update_board(Board * main_plateau, Position * pos){
 
             //update the score
             main_plateau -> color[main_plateau -> board[pos -> col - 'a'][pos -> row] -> col] += 1;
-            main_plateau -> color[(1 & (~main_plateau -> board[pos -> col - 'a'][pos -> row] -> col))] -= 1;
+            main_plateau -> color[(1 & (~(main_plateau -> board[pos -> col - 'a'][pos -> row] -> col)))] -= 1;
         }
     }
     if(pos -> row < main_plateau -> size - 1){
@@ -93,7 +95,7 @@ void update_board(Board * main_plateau, Position * pos){
 
             //update the score
             main_plateau -> color[main_plateau -> board[pos -> col - 'a'][pos -> row] -> col] += 1;
-            main_plateau -> color[(1 & (~main_plateau -> board[pos -> col - 'a'][pos -> row] -> col))] -= 1;
+            main_plateau -> color[(1 & (~(main_plateau -> board[pos -> col - 'a'][pos -> row] -> col)))] -= 1;
         }
     }
     if(pos -> col -'a' < main_plateau -> size - 1){
@@ -103,8 +105,11 @@ void update_board(Board * main_plateau, Position * pos){
 
             //update the score
             main_plateau -> color[main_plateau -> board[pos -> col - 'a'][pos -> row] -> col] += 1;
-            main_plateau -> color[(1 & (~main_plateau -> board[pos -> col - 'a'][pos -> row] -> col))] -= 1;
+            main_plateau -> color[(1 & (~(main_plateau -> board[pos -> col - 'a'][pos -> row] -> col)))] -= 1;
         }
     }
+
+
+    return;
 }
 

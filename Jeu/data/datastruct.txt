@@ -1,0 +1,9 @@
+format pour stones.txt:
+
+elem: %d
+%d %d %d %d 
+
+format pour stone_name.txt:
+
+elem: %d 
+%s 

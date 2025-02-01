@@ -116,3 +116,58 @@ void update_board(Board * main_plateau, Position * pos){
     return;
 }
 
+
+//Deck
+
+Deck * init_deck(int size){
+    Deck * deck = (Deck*) malloc(sizeof(Deck));
+
+    if(deck == NULL){
+        exit(EXIT_FAILURE);
+    }
+    
+    Stone ** tab_stones = (Stone**) malloc(sizeof(Stone*)*size);
+
+    deck -> tab_stones = tab_stones;
+    deck -> col = 0;
+    deck -> size = size;
+
+    return deck;
+}
+
+void free_deck(Deck * deck){
+
+    free(deck->tab_stones);
+    free(deck);
+
+    return;
+}
+
+//Stone
+
+Stone * init_stone(){
+    Stone * stone = (Stone*) malloc(sizeof(Stone));
+
+    if(stone == NULL){
+        exit(EXIT_FAILURE);
+    }
+
+    pic * tab_pic = (pic*) malloc(4*sizeof(pic));
+
+    stone -> col = 0;
+    stone -> tab_pic = tab_pic;
+    stone -> id = 0;
+    stone -> null = 0;
+
+    return stone;
+
+}
+
+
+void free_stone(Stone * stone){
+
+    free(stone -> tab_pic);
+    free(stone);
+
+    return;
+}

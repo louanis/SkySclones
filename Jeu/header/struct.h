@@ -7,7 +7,7 @@ typedef struct Stone_{
     pic * tab_pic; // contains the number of spike in the order : left ; up ; down ; right
     short id;
     char element;
-    char null;
+    char null; //0 pour une pierre non vide, 1 pour une pierre vide
 }Stone;
 
 typedef struct Board_{
@@ -20,6 +20,7 @@ typedef struct Board_{
 typedef struct Deck_{
     Stone ** tab_stones;
     char col; //Blue = 0, Red = 1
+    char size;
 }Deck;
 
 typedef struct Position_{

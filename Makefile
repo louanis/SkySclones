@@ -1,3 +1,5 @@
+#toujours pas complet btw
+
 CC= gcc
 CFLAGS= -C99 -Wall -Werror
 

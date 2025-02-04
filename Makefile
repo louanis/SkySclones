@@ -2,6 +2,7 @@
 
 CC= gcc
 CFLAGS= -C99 -Wall -Werror
+EXEC= test
 
 
 SRC= ./Jeu/source/fetch.c ./Jeu/source/gestion_struct.c ./Jeu/source/actions.c
@@ -15,6 +16,7 @@ app : $(OBJ)
 
 clean : 
 	rm -f $(OBJ)
+	rm -f $(EXEC)
 
 .PHONY : clean deb
 
@@ -22,5 +24,5 @@ deb:
 	gcc -c ./Jeu/source/fetch.c -o ./Jeu/source/fetch.o
 	gcc -c ./Jeu/source/gestion_struct.c -o ./Jeu/source/gestion_struct.o
 	gcc -c ./Jeu/source/actions.c -o ./Jeu/source/actions.o
-	gcc -o test ./Jeu/source/*.o
-	./test 
+	gcc -o $(EXEC) ./Jeu/source/*.o
+	./$(EXEC)

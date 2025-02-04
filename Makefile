@@ -4,7 +4,7 @@ CC= gcc
 CFLAGS= -C99 -Wall -Werror
 
 
-SRC= ./Jeu/source/fetch.c ./Jeu/source/gestion_struct.c
+SRC= ./Jeu/source/fetch.c ./Jeu/source/gestion_struct.c ./Jeu/source/actions.c
 OBJ= $(SRC:.c=.o)
 
 app : $(OBJ)
@@ -21,5 +21,6 @@ clean :
 deb:
 	gcc -c ./Jeu/source/fetch.c -o ./Jeu/source/fetch.o
 	gcc -c ./Jeu/source/gestion_struct.c -o ./Jeu/source/gestion_struct.o
+	gcc -c ./Jeu/source/actions.c -o ./Jeu/source/actions.o
 	gcc -o test ./Jeu/source/*.o
 	./test 

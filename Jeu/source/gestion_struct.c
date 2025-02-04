@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "../header/struct.h"
 #include "../header/types_val.h"
+#include "../header/gestion_struct.h"
 
 
 
@@ -54,61 +55,61 @@ void free_board(Board * main_plateau){
     return;
 }
 
-void ajouter_stone_board(Stone * pierre, Board * main_plateau, Position * pos){
-    if(pos -> col - 'a' >= main_plateau -> size || pos -> row >= main_plateau -> size){
+void ajouter_stone_board(Stone * pierre, Board * main_plateau, Position pos){
+    if(pos.col - 'a' >= main_plateau -> size || pos.row >= main_plateau -> size){
         exit(EXIT_FAILURE);
     }
 
-    main_plateau -> board[pos -> col - 'a'][pos -> row] = pierre;
+    main_plateau -> board[pos.col - 'a'][pos.row] = pierre;
 
     return;
 }
 
-void update_board(Board * main_plateau, Position * pos){
+void update_board(Board * main_plateau, Position pos){
 
 
-    if(pos -> col - 'a' >= main_plateau -> size || pos -> row >= main_plateau -> size){
+    if(pos.col - 'a' >= main_plateau -> size || pos.row >= main_plateau -> size){
         exit(EXIT_FAILURE);
     }
 
-    if(pos -> col -'a' > 0){
-        if(main_plateau -> board[pos -> col - 'a' - 1][pos -> row] -> tab_pic[3] < main_plateau -> board[pos -> col - 'a'][pos -> row] -> tab_pic[0]){
+    if(pos.col -'a' > 0){
+        if(main_plateau -> board[pos.col - 'a' - 1][pos.row] -> tab_pic[3] < main_plateau -> board[pos.col - 'a'][pos.row] -> tab_pic[0]){
             //Change the stone color
-            main_plateau -> board[pos -> col - 'a' - 1][pos -> row] -> col = main_plateau -> board[pos -> col - 'a'][pos -> row] -> col;
+            main_plateau -> board[pos.col - 'a' - 1][pos.row] -> col = main_plateau -> board[pos.col - 'a'][pos.row] -> col;
 
             //update the score
-            main_plateau -> color[main_plateau -> board[pos -> col - 'a'][pos -> row] -> col] += 1;
-            main_plateau -> color[(1 & (~(main_plateau -> board[pos -> col - 'a'][pos -> row] -> col)))] -= 1;
+            main_plateau -> color[main_plateau -> board[pos.col - 'a'][pos.row] -> col] += 1;
+            main_plateau -> color[(1 & (~(main_plateau -> board[pos.col - 'a'][pos.row] -> col)))] -= 1;
         }
     }
-    if(pos -> row > 0){
-        if(main_plateau -> board[pos -> col - 'a'][pos -> row - 1] -> tab_pic[2] < main_plateau -> board[pos -> col - 'a'][pos -> row] -> tab_pic[1]){
+    if(pos.row > 0){
+        if(main_plateau -> board[pos.col - 'a'][pos.row - 1] -> tab_pic[2] < main_plateau -> board[pos.col - 'a'][pos.row] -> tab_pic[1]){
             //Change the stone color
-            main_plateau -> board[pos -> col - 'a'][pos -> row - 1] -> col = main_plateau -> board[pos -> col - 'a'][pos -> row] -> col;
+            main_plateau -> board[pos.col - 'a'][pos.row - 1] -> col = main_plateau -> board[pos.col - 'a'][pos.row] -> col;
 
             //update the score
-            main_plateau -> color[main_plateau -> board[pos -> col - 'a'][pos -> row] -> col] += 1;
-            main_plateau -> color[(1 & (~(main_plateau -> board[pos -> col - 'a'][pos -> row] -> col)))] -= 1;
+            main_plateau -> color[main_plateau -> board[pos.col - 'a'][pos.row] -> col] += 1;
+            main_plateau -> color[(1 & (~(main_plateau -> board[pos.col - 'a'][pos.row] -> col)))] -= 1;
         }
     }
-    if(pos -> row < main_plateau -> size - 1){
-        if(main_plateau -> board[pos -> col - 'a'][pos -> row + 1] -> tab_pic[1] < main_plateau -> board[pos -> col - 'a'][pos -> row] -> tab_pic[2]){
+    if(pos.row < main_plateau -> size - 1){
+        if(main_plateau -> board[pos.col - 'a'][pos.row + 1] -> tab_pic[1] < main_plateau -> board[pos.col - 'a'][pos.row] -> tab_pic[2]){
             //Change the stone color
-            main_plateau -> board[pos -> col - 'a'][pos -> row + 1] -> col = main_plateau -> board[pos -> col - 'a'][pos -> row] -> col;
+            main_plateau -> board[pos.col - 'a'][pos.row + 1] -> col = main_plateau -> board[pos.col - 'a'][pos.row] -> col;
 
             //update the score
-            main_plateau -> color[main_plateau -> board[pos -> col - 'a'][pos -> row] -> col] += 1;
-            main_plateau -> color[(1 & (~(main_plateau -> board[pos -> col - 'a'][pos -> row] -> col)))] -= 1;
+            main_plateau -> color[main_plateau -> board[pos.col - 'a'][pos.row] -> col] += 1;
+            main_plateau -> color[(1 & (~(main_plateau -> board[pos.col - 'a'][pos.row] -> col)))] -= 1;
         }
     }
-    if(pos -> col -'a' < main_plateau -> size - 1){
-        if(main_plateau -> board[pos -> col - 'a' + 1][pos -> row] -> tab_pic[0] < main_plateau -> board[pos -> col - 'a'][pos -> row] -> tab_pic[3]){
+    if(pos.col -'a' < main_plateau -> size - 1){
+        if(main_plateau -> board[pos.col - 'a' + 1][pos.row] -> tab_pic[0] < main_plateau -> board[pos.col - 'a'][pos.row] -> tab_pic[3]){
             //Change the stone color
-            main_plateau -> board[pos -> col - 'a' + 1][pos -> row] -> col = main_plateau -> board[pos -> col - 'a'][pos -> row] -> col;
+            main_plateau -> board[pos.col - 'a' + 1][pos.row] -> col = main_plateau -> board[pos.col - 'a'][pos.row] -> col;
 
             //update the score
-            main_plateau -> color[main_plateau -> board[pos -> col - 'a'][pos -> row] -> col] += 1;
-            main_plateau -> color[(1 & (~(main_plateau -> board[pos -> col - 'a'][pos -> row] -> col)))] -= 1;
+            main_plateau -> color[main_plateau -> board[pos.col - 'a'][pos.row] -> col] += 1;
+            main_plateau -> color[(1 & (~(main_plateau -> board[pos.col - 'a'][pos.row] -> col)))] -= 1;
         }
     }
 
@@ -132,6 +133,11 @@ Deck * init_deck(int size){
     deck -> col = 0;
     deck -> size = size;
 
+    for(int i = 0; i<size; i++){
+        deck -> tab_stones[i] = init_stone();
+        deck -> tab_stones[i] -> null = 1;
+    }
+
     return deck;
 }
 
@@ -142,6 +148,13 @@ void free_deck(Deck * deck){
 
     return;
 }
+
+
+
+Stone * get_stone(Deck * deck, int id_stone){
+    return deck -> tab_stones[id_stone];
+}
+
 
 //Stone
 

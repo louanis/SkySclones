@@ -3,12 +3,13 @@
 
 Board * init_board();
 void free_board(Board * main_plateau);
-void ajouter_stone_board(Stone * pierre, Board * main_plateau, Position * pos);
-void update_board(Board * main_plateau, Position * pos);
+void ajouter_stone_board(Stone * pierre, Board * main_plateau, Position pos);
+void update_board(Board * main_plateau, Position pos);
 
 
 Deck * init_deck(int size);
 void free_deck(Deck * deck);
+Stone * get_stone(Deck * deck, int id_stone);
 
 
 Stone * init_stone();

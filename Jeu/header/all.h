@@ -1,0 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "../header/struct.h"
+#include "../header/fetch.h"
+#include "../header/gestion_struct.h"
+#include "../header/types_val.h"
+#include "../header/actions.h"
+#include "../header/affichage_terminal.h"

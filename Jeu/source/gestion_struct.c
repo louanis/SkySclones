@@ -1,28 +1,24 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "../header/struct.h"
-#include "../header/types_val.h"
-#include "../header/gestion_struct.h"
+#include "../header/all.h"
 
 
 
 //BOARD
 
-Board * init_board(){
+Board * init_board(char SIZE){
     Board * main_plateau = (Board*) malloc(sizeof(Board));
 
     if(main_plateau == NULL){
         exit(EXIT_FAILURE);
     }
 
-    Stone *** plateau = (Stone***) malloc(sizeof(Stone**)*BOARD_SIZE);
+    Stone *** plateau = (Stone***) malloc(sizeof(Stone**)*SIZE);
 
     if(plateau == NULL){
         exit(EXIT_FAILURE);
     }
 
-    for(int i = 0;i<BOARD_SIZE;i++){
-        plateau[i] = (Stone**) malloc(sizeof(Stone*)*BOARD_SIZE);
+    for(int i = 0;i<SIZE;i++){
+        plateau[i] = (Stone**) malloc(sizeof(Stone*)*SIZE);
 
         if(plateau[i] == NULL){
             exit(EXIT_FAILURE);
@@ -33,8 +29,13 @@ Board * init_board(){
     main_plateau -> board = plateau;
     main_plateau -> element = 0;
     main_plateau -> color = (char*) malloc(sizeof(char)*2);
-    main_plateau -> size = BOARD_SIZE;
+    main_plateau -> size = SIZE;
 
+    for(int i = 0; i < main_plateau -> size ;i++){
+        for(int j = 0; j < main_plateau -> size; j++){
+            main_plateau -> board[i][j] = init_stone();
+        }
+    }
     return main_plateau;
 }
 
@@ -170,10 +171,28 @@ Stone * init_stone(){
     stone -> col = 0;
     stone -> tab_pic = tab_pic;
     stone -> id = 0;
-    stone -> null = 0;
+    stone -> null = 1;
 
     return stone;
 
+}
+
+void copy_stone(Stone * nullStone, Stone * cpStone){
+    nullStone->col = cpStone->col;
+    nullStone-> id = cpStone->id;
+    nullStone->element = cpStone->element;
+    nullStone->null = 0;
+
+    for(int i = 0; i<4; i++){
+        nullStone -> tab_pic[i] = cpStone -> tab_pic[i];
+    }
+
+    return;
+}
+
+void nullify_stone(Stone * stone){
+    stone -> null = 1;
+    return;
 }
 
 

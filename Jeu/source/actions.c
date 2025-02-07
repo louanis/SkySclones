@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "../header/struct.h"
-#include "../header/fetch.h"
-#include "../header/gestion_struct.h"
-#include "../header/types_val.h"
-#include "../header/actions.h"
+#include "../header/all.h"
 
 
 
@@ -33,5 +27,8 @@ void place_stone_board(Stone * stone, Board * board, Position pos){
 
 
 void tour(Board * board, Deck * deck){
-    
+    //Afficher deck actuel
+    //Choisir pierre
+    //Choisir position sur le plateau
 }
+

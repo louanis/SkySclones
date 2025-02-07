@@ -1,12 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "../header/struct.h"
-#include "../header/fetch.h"
-#include "../header/gestion_struct.h"
-#include "../header/types_val.h"
+#include "../header/all.h"
 
 
-//#define DEBUG_FETCH
+#define DEBUG_FETCH
 
 //List of all stones
 
@@ -27,6 +22,7 @@ Deck * fetch_stones(void){
     for(int i = 0; i<size;i++){
         deck -> tab_stones[i] = init_stone();
         deck -> tab_stones[i] -> id = i;
+        deck -> tab_stones[i] -> null = 0;
 
         for(int j = 0; j<4;j++){
             fscanf(f,"%d ",&pic);
@@ -51,17 +47,52 @@ void print_stone(Stone * stone){
 #ifdef DEBUG_FETCH
 
 int main(){
+    srand(time(NULL)+rand());
+    char SIZE = 3;
+    int i,j;
+
     Deck * deck = fetch_stones();
+    Board * board = init_board(SIZE);
 
     
-    for(int i = 0; i< deck-> size; i++){
+    for(i = 0; i< deck-> size; i++){
         print_stone(deck -> tab_stones[i]);
     }
 
-    for(int i = 0; i< deck-> size; i++){
+    for(i = 0; i<SIZE;i++){
+        
+        for(j = 0; j<SIZE;j++){
+            
+        }
+    }
+
+
+    *board -> board[2][0] = *deck -> tab_stones[rand()%3];
+
+    affiche_board(board);
+
+    Deck * deck2 = init_deck(5);
+
+    copy_stone(deck2 -> tab_stones[1],deck -> tab_stones[deck->size - 1]);
+
+    printf("--------\n");
+
+    print_stone(deck2 -> tab_stones[1]);
+
+    for(i = 0; i< deck-> size; i++){
         free_stone(deck -> tab_stones[i]);
     }
 
+    printf("--------\n");
+
+    print_stone(deck2 -> tab_stones[1]);
+
+    for(i = 0; i< deck2-> size; i++){
+        free_stone(deck2 -> tab_stones[i]);
+    }
+    
+    free_board(board);
+    free_deck(deck2);
     free_deck(deck);
 
 }

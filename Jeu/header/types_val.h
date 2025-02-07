@@ -11,6 +11,4 @@
 
     #endif
 
-    #define BOARD_SIZE 3
-
 #endif

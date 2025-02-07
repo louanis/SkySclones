@@ -1,6 +1,15 @@
 #include "../header/all.h"
 
 
+int in(int a, int* b, int size){
+    for(int i = 0; i<size; i++){
+        if(b[i] == a){
+            return 1;
+        }
+    }
+    return 0;
+}
+
 
 //BOARD
 
@@ -56,12 +65,12 @@ void free_board(Board * main_plateau){
     return;
 }
 
-void ajouter_stone_board(Stone * pierre, Board * main_plateau, Position pos){
+void ajouter_stone_board(Deck * deck,int id, Board * main_plateau, Position pos){
     if(pos.col - 'a' >= main_plateau -> size || pos.row >= main_plateau -> size){
         exit(EXIT_FAILURE);
     }
 
-    main_plateau -> board[pos.col - 'a'][pos.row] = pierre;
+    *main_plateau -> board[pos.col - 'a'][pos.row] = *deck -> tab_stones[id];
 
     return;
 }

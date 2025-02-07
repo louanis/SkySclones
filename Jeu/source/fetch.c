@@ -1,7 +1,7 @@
 #include "../header/all.h"
 
 
-#define DEBUG_FETCH
+//#define DEBUG_FETCH
 
 //List of all stones
 
@@ -71,6 +71,16 @@ int main(){
 
     affiche_board(board);
 
+    //debug tour
+
+    tour(board,deck);
+
+
+
+
+
+
+    //debug deck 2
     Deck * deck2 = init_deck(5);
 
     copy_stone(deck2 -> tab_stones[1],deck -> tab_stones[deck->size - 1]);

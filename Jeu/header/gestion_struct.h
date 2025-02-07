@@ -3,8 +3,9 @@
 
 Board * init_board(char SIZE);
 void free_board(Board * main_plateau);
-void ajouter_stone_board(Stone * pierre, Board * main_plateau, Position pos);
+void ajouter_stone_board(Deck * deck, int id_stone, Board * main_plateau, Position pos);
 void update_board(Board * main_plateau, Position pos);
+int in(int a, int* b, int size);
 
 
 Deck * init_deck(int size);
